@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#bcece8">
+  <title>Il Dottore Ultimate Gacha 🧪</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Il Dottore Ultimate Gacha home">
+        <span class="brand-icon">🧪</span>
+        <span>Il Dottore<br><em>Ultimate Gacha</em></span>
+      </a>
+      <button class="ticket-counter" id="ticketCounter" type="button" aria-label="Open ticket refill options" aria-haspopup="dialog" aria-live="polite">
+        <img class="ticket-icon" id="ticketIcon" src="images/ticket.png" alt="Ticket">
+        <span class="ticket-number" id="ticketCount">1000</span>
+        <span class="ticket-label">PULLS · TAP TO REFILL</span>
+      </button>
+      <div class="pity-counter" aria-live="polite" title="A character is guaranteed on the 60th pull without a character">
+        <span class="pity-label">CHARACTER GUARANTEE</span>
+        <strong id="pityCount">0 / 60</strong>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">A questionable experiment • results not guaranteed</div>
+        <h1>WHO WILL YOU GET?</h1>
+        <p class="subtitle">A little luck, a lot of Dottore.</p>
+
+        <div class="machine-card">
+          <div class="sparkle sparkle-one">✦</div>
+          <div class="sparkle sparkle-two">✧</div>
+          <div class="chest-wrap" id="chestWrap">
+            <div class="chest-glow"></div>
+            <div class="chest-placeholder" id="chestPlaceholder" hidden>
+              <span>🧰</span>
+              <small>YOUR CHEST ART GOES HERE</small>
+            </div>
+            <img class="chest-image" id="chestImage" src="images/chest.png" alt="Gacha chest">
+          </div>
+          <div class="chest-caption">DOTTORE SOUL BOX</div>
+          <button class="pull-button" id="pullButton">
+            <span>✦</span> PULL ×10 <span>✦</span>
+          </button>
+          <div class="cost-note">Costs 10 pulls • You have <b id="costCount">1000</b></div>
+          <div class="pity-note">Next guaranteed character at 60 pulls without a character. Any character resets the counter.</div>
+          <div class="status-line" id="statusLine" aria-live="polite">The Doctor is waiting for your decision.</div>
+        </div>
+      </section>
+
+      <section class="results-section" id="resultsSection">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">LATEST EXPERIMENT</span>
+            <h2>Recent drops</h2>
+          </div>
+          <button class="text-button" id="clearResultsButton" type="button">Clear view</button>
+        </div>
+        <div class="results-grid" id="resultsGrid">
+          <div class="empty-state">Your next discoveries will appear here ✨</div>
+        </div>
+      </section>
+
+      <section class="collection-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">EVERYTHING YOU'VE FOUND</span>
+            <h2>My collection <span class="collection-count" id="collectionCount">0 / 12</span></h2>
+          </div>
+          <button class="text-button" id="resetButton" type="button">Reset save</button>
+        </div>
+        <div class="collection-grid" id="collectionGrid"></div>
+      </section>
+
+      <section class="support-section">
+        <span class="section-kicker">LIKE THIS LITTLE EXPERIMENT?</span>
+        <h2>Support the Creator ♡</h2>
+        <p>If you enjoy the gacha, you can support its creator here. Thank you for helping this project grow!</p>
+        <div class="support-buttons">
+          <a class="support-button paypal-button" data-support-link="paypal" href="https://www.paypal.com/paypalme/AuthorCorp" target="_blank" rel="noopener noreferrer">♡ PayPal.me</a>
+          <a class="support-button alerts-button" data-support-link="donationalerts" href="https://www.donationalerts.com/r/author_hd" target="_blank" rel="noopener noreferrer">✦ DonationAlerts</a>
+        </div>
+      </section>
+
+
+    </main>
+
+    <footer>Made with questionable science and questionable luck. <span>♡</span><div class="copyright-note">This is an unofficial Genshin Impact fan site. All rights to Genshin Impact and its characters belong to HoYoverse.</div></footer>
+  </div>
+
+  <div class="reveal-overlay" id="refillOverlay" hidden>
+    <div class="reveal-panel refill-panel" role="dialog" aria-modal="true" aria-labelledby="refillTitle">
+      <button class="close-reveal" id="closeRefill" aria-label="Close ticket refill">×</button>
+      <div class="reveal-kicker">NEED MORE TICKETS?</div>
+      <h2 id="refillTitle">REFILL YOUR PULLS ✨</h2>
+      <p class="refill-description">Visit my socials and claim +200 tickets from each one!</p>
+      <div class="social-buttons" id="socialButtons"></div>
+      <p class="social-note">Rewards can be claimed once per social link in this browser. The site cannot verify follows or visits.</p>
+    </div>
+  </div>
+
+  <div class="art-lightbox" id="artLightbox" hidden role="dialog" aria-modal="true" aria-label="Character artwork">
+    <button class="art-lightbox-close" id="closeArtLightbox" type="button" aria-label="Close artwork">×</button>
+    <div class="art-lightbox-content">
+      <img id="lightboxImage" src="" alt="">
+      <div class="art-lightbox-name" id="lightboxName"></div>
+    </div>
+  </div>
+
+  <div class="reveal-overlay" id="revealOverlay" hidden>
+    <div class="reveal-panel">
+      <button class="close-reveal" id="closeReveal" aria-label="Close results">×</button>
+      <div class="reveal-kicker">THE RESULTS ARE IN</div>
+      <h2 id="revealTitle">A NEW DISCOVERY!</h2>
+      <div class="reveal-items" id="revealItems"></div>
+      <button class="pull-button reveal-close-button" id="revealDone">CONTINUE</button>
+    </div>
+  </div>
+
+  <audio id="backgroundMusic" src="sounds/music.mp3" loop preload="none"></audio>
+  <audio id="chestSound" src="sounds/chest_open.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
